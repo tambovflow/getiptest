@@ -8,9 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/mac")
+@RequestMapping("/")
 public class MacController {
+
+
     @GetMapping
+    public ResponseEntity<Object> ping() {
+        return ResponseEntity.ok("PING: " + System.currentTimeMillis());
+    }
+
+    @GetMapping("/mac")
     public ResponseEntity<Object> getMac(HttpServletRequest request) {
         String ip = getRemoteIp(request);
 
